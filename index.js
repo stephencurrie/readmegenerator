@@ -29,7 +29,7 @@ const promptUser = () => {
           {value: 'MIT', name: "MIT License"},
           {value: 'GNU', name: "GNU GPLv3"},
         ],
-      //   let license = list.includes({
+          //   let license = list.includes({
       //     'None': '',
       //     'MIT': 'john.doe@example.com'
       //     'GNU': ""
@@ -59,9 +59,19 @@ const promptUser = () => {
   };
 
   const generateMd = ({ title, description, installation, license, contributor, tests, github, email }) =>
+{
+  let licenseBlock = "";
+  if (license === "MIT"){
+    licenseBlock = `${title} is licensed under the [${license} License](./License/${license}/${license}.txt)`
+  } 
+  // elseif
+  let licenseBadge = "";
+  if (license === "MIT"){
+    licenseBadge = `[![License: ${license}](https://img.shields.io/badge/License-${license}-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
+  }
 
-`# ${title}
-
+return `# ${title}
+${licenseBadge}
 ## Description
 
 ${description}
@@ -80,7 +90,7 @@ ${installation}
 
 ## License
 
-${title} is licensed under [${license}](./License/${license}/${license}.txt)
+${licenseBlock}
 
 
 ## Contributor
@@ -95,6 +105,7 @@ ${tests}
 For any questions, please contact me at https://github.com/${github}
 
 I can be reached at ${email}`;
+}
 
 // Starts function to prompt user and then generates README.md file
 
