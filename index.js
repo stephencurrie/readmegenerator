@@ -29,11 +29,7 @@ const promptUser = () => {
           {value: 'MIT', name: "MIT License"},
           {value: 'GNU', name: "GNU GPLv3"},
         ],
-          //   let license = list.includes({
-      //     'None': '',
-      //     'MIT': 'john.doe@example.com'
-      //     'GNU': ""
-      // });
+
       },
       {
         type: 'input',
@@ -124,7 +120,7 @@ const init = () => {
     promptUser()
       
       .then((answers) => fs.writeFileSync('READMESAMPLE.md', generateMd(answers)))
-      .then(() => console.log('Successfully wrote to README.md'))
+      .then(() => console.log('Successfully wrote to READMESAMPLE.md'))
       .catch((err) => console.error(err));
   };
   
