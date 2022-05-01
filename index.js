@@ -60,6 +60,7 @@ const promptUser = () => {
 
   const generateMd = ({ title, description, installation, license, contributor, tests, github, email }) =>
 {
+  // This defines the text and links in the License section
   let licenseBlock = "";
   if (license === "None"){
     licenseBlock = `There are no licensing requirements`
@@ -70,7 +71,7 @@ const promptUser = () => {
   else if (license === "GNU"){
     licenseBlock = `${title} is licensed under the [GNU GPLv3 License](./License/${license}/${license}.txt)`
   } 
-  // elseif
+  // This gets the licensing badge information
   let licenseBadge = "";
  
   if (license === "MIT"){
@@ -122,7 +123,7 @@ I can be reached at ${email}`;
 const init = () => {
     promptUser()
       
-      .then((answers) => fs.writeFileSync('README.md', generateMd(answers)))
+      .then((answers) => fs.writeFileSync('READMESAMPLE.md', generateMd(answers)))
       .then(() => console.log('Successfully wrote to README.md'))
       .catch((err) => console.error(err));
   };
