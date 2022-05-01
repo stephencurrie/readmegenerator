@@ -18,7 +18,7 @@
 
 ## License
 
-
+There are no licensing requirements
 
 
 ## Contributor

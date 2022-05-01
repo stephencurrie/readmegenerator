@@ -25,7 +25,7 @@ const promptUser = () => {
         name: 'license',
         message: 'What licensing do you want to set up for your project?',
         choices: [
-          {value: 'There is no license', name: "None"},
+          {value: 'None', name: "None"},
           {value: 'MIT', name: "MIT License"},
           {value: 'GNU', name: "GNU GPLv3"},
         ],
@@ -61,13 +61,23 @@ const promptUser = () => {
   const generateMd = ({ title, description, installation, license, contributor, tests, github, email }) =>
 {
   let licenseBlock = "";
-  if (license === "MIT"){
+  if (license === "None"){
+    licenseBlock = `There are no licensing requirements`
+  } 
+  else if (license === "MIT"){
     licenseBlock = `${title} is licensed under the [${license} License](./License/${license}/${license}.txt)`
+  } 
+  else if (license === "GNU"){
+    licenseBlock = `${title} is licensed under the [GNU GPLv3 License](./License/${license}/${license}.txt)`
   } 
   // elseif
   let licenseBadge = "";
+ 
   if (license === "MIT"){
-    licenseBadge = `[![License: ${license}](https://img.shields.io/badge/License-${license}-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
+    licenseBadge = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+  } 
+  else if (license === "GNU"){
+    licenseBadge = `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
   }
 
 return `# ${title}
